@@ -1,4 +1,4 @@
 {
-  "background": "white",
-  "foreground": "red"
+  "background": "{{ demo_background_colour }}",
+  "foreground": "{{ demo_foreground_colour }}"
 }

@@ -29,9 +29,25 @@
    - git initial commit
 
 ## Microservice
+ * feature branch
  * reorg code for frontend & backend
  * copy/ pasta fronend to backend
  * change port
  * change template to a versioned API json file
+ * change reponse mimetype 
+ * Add env variables (with defaults)
+ * test by hand
+ * Add usages to README.md
   
+### Usage
+use provided `./start.sh` or
  
+```shell script
+cd src/backend/var/www/TestApp
+
+docker run -d -p 58081:80 --name=demo.backend -v $PWD:/app -e DEMO_FOREGROUND_COLOUR=green demo.backend
+
+docker kill demo.backend
+docker rm demo.backend
+
+```
