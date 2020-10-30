@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+
+  backend:
+    build: ./backend
+    ports:
+      - "58081:80"
+    environment:
+      DEMO_FOREGROUND_COLOUR: "magenta"
+    volumes:
+      - ./backend:/app
+
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "58080:80"
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - backend

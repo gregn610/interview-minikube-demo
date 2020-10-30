@@ -3,17 +3,17 @@
 
 
 # Plan
- * flask webapp using web service (frontend)
- * microservice to return color from env var (backend)
- * Dockerize nginx webserver + microservice
- * Kubernetes chart for Deployment + Service
- * Load testing container
- * Logs files monitoring 
- * istio service mesh
- * isto dashboard demo URLs etc.
+ - [x] flask webapp using web service (frontend)
+ - [x] microservice to return color from env var (backend)
+ - [x] Dockerize nginx webserver + microservice ( dockercompose + javascript)
+ - [ ] Kubernetes chart for Deployment + Service
+ - [ ] Load testing container
+ - [ ] Logs files monitoring 
+ - [ ] istio service mesh
+ - [ ] isto dashboard demo URLs etc.
  
 
-# Implementation
+# Implementation Log
 
 ## flask webapp using web service
  * Using alpine linux for image size & reduced attack surface
@@ -49,5 +49,28 @@ docker run -d -p 58081:80 --name=demo.backend -v $PWD:/app -e DEMO_FOREGROUND_CO
 
 docker kill demo.backend
 docker rm demo.backend
+
+```
+
+## Dockerize nginx webserver + microservice
+ * reorg paths, remove unwanted nesting
+ * add docker-compose file
+ * write javascript for frontend
+ * Deal with CORS for API
+ 
+
+```shell script
+cd src
+docker-compose up
+
+docker-compose down --volumes
+
+```
+
+Hot restart
+```shell script
+touch frontend/uwsgi.ini
+# and/or 
+touch backend/uwsgi.ini
 
 ```
