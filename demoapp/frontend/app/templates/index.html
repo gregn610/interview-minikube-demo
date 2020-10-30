@@ -5,34 +5,18 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Welcome home</title>
-
-  <script>
-      function setColoursFromApi(url) {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
-          if (this.readyState == 4 && this.status == 200) {
-            var retJson = JSON.parse(this.responseText);
-            myFunction(retJson);
-          }
-        };
-        xmlhttp.open("GET", url, true);
-        xmlhttp.send();
-
-        function myFunction(js) {
-          document.body.style.background = js.background;
-          document.getElementById("heading").style.background = js.foreground;
-        }
-      }
-      setColoursFromApi('{{ BACKEND_API_PROTOCOL }}://{{ BACKEND_SERVICE_HOST }}:{{ BACKEND_SERVICE_PORT }}/{{ BACKEND_API_PATH_COLOUR }}')
-  </script>
-
   </head>
 
   <body>
     <h1 id="heading">Colour Demo Page</h1>
-    <hr>
-    <p>
-      Backend <a href="{{ BACKEND_API_PROTOCOL }}://{{ BACKEND_SERVICE_HOST }}:{{ BACKEND_SERVICE_PORT }}/{{ BACKEND_API_PATH_COLOUR }}">API</a>
-    </p>
+    <script>
+      function setColoursFromApi() {
+        var api_data = {{ JSON_DATA | safe }};
+        document.body.style.background = api_data.background;
+        document.getElementById("heading").style.background = api_data.foreground;
+      }
+      setColoursFromApi()
+    </script>
   </body>
+
 </html>
