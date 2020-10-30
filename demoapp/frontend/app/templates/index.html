@@ -23,12 +23,16 @@
           document.getElementById("heading").style.background = js.foreground;
         }
       }
-      setColoursFromApi('http://' + window.location.hostname + ':58081/api/v1/colour.json')
+      setColoursFromApi('{{ BACKEND_API_PROTOCOL }}://{{ BACKEND_SERVICE_HOST }}:{{ BACKEND_SERVICE_PORT }}/{{ BACKEND_API_PATH_COLOUR }}')
   </script>
 
   </head>
 
   <body>
     <h1 id="heading">Colour Demo Page</h1>
+    <hr>
+    <p>
+      Backend <a href="{{ BACKEND_API_PROTOCOL }}://{{ BACKEND_SERVICE_HOST }}:{{ BACKEND_SERVICE_PORT }}/{{ BACKEND_API_PATH_COLOUR }}">API</a>
+    </p>
   </body>
 </html>
