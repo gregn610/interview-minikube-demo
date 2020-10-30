@@ -3,8 +3,8 @@
 
 
 # Plan
- * flask webapp using web service
- * microservice to return color from env var
+ * flask webapp using web service (frontend)
+ * microservice to return color from env var (backend)
  * Dockerize nginx webserver + microservice
  * Kubernetes chart for Deployment + Service
  * Load testing container
@@ -25,5 +25,13 @@
         - nginx logs redirected to stdout & stderr
         - start.sh volume path was incorrect
    - add `touch-reload = /app/uwsgi.ini` feature
+   - test by hand
+   - git initial commit
 
 ## Microservice
+ * reorg code for frontend & backend
+ * copy/ pasta fronend to backend
+ * change port
+ * change template to a versioned API json file
+  
+ 
