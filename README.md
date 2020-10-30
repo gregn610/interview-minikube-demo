@@ -15,7 +15,7 @@
 
 # Implementation Log
 
-## flask webapp using web service
+### flask webapp using web service
  * Using alpine linux for image size & reduced attack surface
  * rip & copy pasta [tutorial](https://www.digitalocean.com/community/tutorials/how-to-build-and-deploy-a-flask-application-using-docker-on-ubuntu-18-04) for starting point
  * Review upstream dockerfiles
@@ -28,7 +28,7 @@
    - test by hand
    - git initial commit
 
-## Microservice
+### Microservice
  * feature branch
  * reorg code for frontend & backend
  * copy/ pasta fronend to backend
@@ -39,7 +39,7 @@
  * test by hand
  * Add usages to README.md
   
-### Usage
+#### Usage
 use provided `./start.sh` or
  
 ```shell script
@@ -52,7 +52,7 @@ docker rm demo.backend
 
 ```
 
-## Dockerize nginx webserver + microservice
+### Dockerize nginx webserver + microservice
  * reorg paths, remove unwanted nesting
  * add docker-compose file
  * write javascript for frontend
