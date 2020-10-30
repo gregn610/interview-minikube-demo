@@ -1,7 +1,6 @@
 version: '3.8'
 
 services:
-
   backend:
     build: ./backend
     ports:
@@ -9,7 +8,7 @@ services:
     environment:
       DEMO_FOREGROUND_COLOUR: "magenta"
     volumes:
-      - ./backend:/app
+      - backend-volume:/app
 
 
   frontend:
@@ -17,6 +16,23 @@ services:
     ports:
       - "58080:80"
     volumes:
-      - ./frontend:/app
+      - frontend-volume:/app
     depends_on:
       - backend
+
+volumes:
+  backend-volume:
+    name: backend-volume
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: './backend'
+
+  frontend-volume:
+    name: frontend-volume
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: './frontend'
