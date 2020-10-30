@@ -13,7 +13,7 @@
  * isto dashboard demo URLs etc.
  
 
-# Implementation
+# Implementation Log
 
 ## flask webapp using web service
  * Using alpine linux for image size & reduced attack surface
@@ -53,11 +53,24 @@ docker rm demo.backend
 ```
 
 ## Dockerize nginx webserver + microservice
+ * reorg paths, remove unwanted nesting
+ * add docker-compose file
+ * write javascript for frontend
+ * Deal with CORS for API
+ 
 
 ```shell script
 cd src
 docker-compose up
 
 docker-compose down --volumes
+
+```
+
+Hot restart
+```shell script
+touch frontend/uwsgi.ini
+# and/or 
+touch backend/uwsgi.ini
 
 ```
