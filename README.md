@@ -3,14 +3,14 @@
 
 
 # Plan
- * flask webapp using web service (frontend)
- * microservice to return color from env var (backend)
- * Dockerize nginx webserver + microservice
- * Kubernetes chart for Deployment + Service
- * Load testing container
- * Logs files monitoring 
- * istio service mesh
- * isto dashboard demo URLs etc.
+ - [x] flask webapp using web service (frontend)
+ - [x] microservice to return color from env var (backend)
+ - [x] Dockerize nginx webserver + microservice ( dockercompose + javascript)
+ - [ ] Kubernetes chart for Deployment + Service
+ - [ ] Load testing container
+ - [ ] Logs files monitoring 
+ - [ ] istio service mesh
+ - [ ] isto dashboard demo URLs etc.
  
 
 # Implementation Log
