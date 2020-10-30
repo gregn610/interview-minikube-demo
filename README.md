@@ -51,3 +51,13 @@ docker kill demo.backend
 docker rm demo.backend
 
 ```
+
+## Dockerize nginx webserver + microservice
+
+```shell script
+cd src
+docker-compose up
+
+docker-compose down --volumes
+
+```
