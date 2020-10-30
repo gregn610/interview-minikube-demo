@@ -3,8 +3,8 @@
 
 
 # Plan
- * microservice to return color from env var
- * flask webapp using web service
+ * flask webapp using web service (frontend)
+ * microservice to return color from env var (backend)
  * Dockerize nginx webserver + microservice
  * Kubernetes chart for Deployment + Service
  * Load testing container
@@ -15,7 +15,7 @@
 
 # Implementation
 
- ## color microservice
+## flask webapp using web service
  * Using alpine linux for image size & reduced attack surface
  * rip & copy pasta [tutorial](https://www.digitalocean.com/community/tutorials/how-to-build-and-deploy-a-flask-application-using-docker-on-ubuntu-18-04) for starting point
  * Review upstream dockerfiles
@@ -25,3 +25,29 @@
         - nginx logs redirected to stdout & stderr
         - start.sh volume path was incorrect
    - add `touch-reload = /app/uwsgi.ini` feature
+   - test by hand
+   - git initial commit
+
+## Microservice
+ * feature branch
+ * reorg code for frontend & backend
+ * copy/ pasta fronend to backend
+ * change port
+ * change template to a versioned API json file
+ * change reponse mimetype 
+ * Add env variables (with defaults)
+ * test by hand
+ * Add usages to README.md
+  
+### Usage
+use provided `./start.sh` or
+ 
+```shell script
+cd src/backend/var/www/TestApp
+
+docker run -d -p 58081:80 --name=demo.backend -v $PWD:/app -e DEMO_FOREGROUND_COLOUR=green demo.backend
+
+docker kill demo.backend
+docker rm demo.backend
+
+```
