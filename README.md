@@ -74,3 +74,25 @@ touch frontend/uwsgi.ini
 touch backend/uwsgi.ini
 
 ```
+
+### Kubernetes chart for Deployment + Service
+For docker-windows kubernetes
+```shell script
+export KUBECONFIG=/c/Users/gregn/.kube/config
+kubectl config get-contexts
+
+```
+ * `kompose` to convert docker-compose.yaml to k8s definitions
+ * de-hardcode backend URL in frontend
+ * rewrite `kompose` stuff by hand. Going with `NodePort` services for now
+
+```shell script
+cd kubernetes
+kubectl apply -f .
+kubectl get nodes
+kubectl get svc  # <-------- get localhost ports from here
+
+```
+these'll be busted if the port moves
+[backend URL](http://localhost:30039/)
+[frontend URL](http://localhost:30467/api/v1/colour.json)
