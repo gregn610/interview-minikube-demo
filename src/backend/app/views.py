@@ -1,4 +1,4 @@
-from flask import render_template, Response
+from flask import render_template, Response, request, make_response
 from app import app
 
 from os import getenv
@@ -22,3 +22,26 @@ def template():
     # response.headers['X-Parachutes'] = 'parachutes are cool'
 
     return response
+
+
+### CORS section
+# Thanks: https://stackoverflow.com/a/63400010/266387
+@app.after_request
+def after_request_func(response):
+    origin = request.headers.get('Origin')
+    if request.method == 'OPTIONS':
+        response = make_response()
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+        response.headers.add('Access-Control-Allow-Headers', 'x-csrf-token')
+        response.headers.add('Access-Control-Allow-Methods',
+                            'GET, POST, OPTIONS, PUT, PATCH, DELETE')
+        if origin:
+            response.headers.add('Access-Control-Allow-Origin', origin)
+    else:
+        response.headers.add('Access-Control-Allow-Credentials', 'true')
+        if origin:
+            response.headers.add('Access-Control-Allow-Origin', origin)
+
+    return response
+### end CORS section
