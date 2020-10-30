@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose -v convert
+    kompose.version: 1.7.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: frontend
+  name: frontend
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: frontend
+    spec:
+      containers:
+      - image: frontend
+        name: frontend
+        ports:
+        - containerPort: 80
+        resources: {}
+        volumeMounts:
+        - mountPath: /app
+          name: frontend-volume
+      restartPolicy: Always
+      volumes:
+      - name: frontend-volume
+        persistentVolumeClaim:
+          claimName: frontend-volume
+status: {}

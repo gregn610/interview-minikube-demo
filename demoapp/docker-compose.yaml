@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3'
 
 services:
   backend:
@@ -22,7 +22,6 @@ services:
 
 volumes:
   backend-volume:
-    name: backend-volume
     driver: local
     driver_opts:
       type: 'none'
@@ -30,7 +29,6 @@ volumes:
       device: './backend'
 
   frontend-volume:
-    name: frontend-volume
     driver: local
     driver_opts:
       type: 'none'

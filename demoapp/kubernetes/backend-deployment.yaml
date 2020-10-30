@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose -v convert
+    kompose.version: 1.7.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: backend
+  name: backend
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: backend
+    spec:
+      containers:
+      - env:
+        - name: DEMO_FOREGROUND_COLOUR
+          value: magenta
+        image: backend
+        name: backend
+        ports:
+        - containerPort: 80
+        resources: {}
+        volumeMounts:
+        - mountPath: /app
+          name: backend-volume
+      restartPolicy: Always
+      volumes:
+      - name: backend-volume
+        persistentVolumeClaim:
+          claimName: backend-volume
+status: {}
