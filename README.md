@@ -3,8 +3,8 @@
 
 
 # Plan
- * microservice to return color from env var
  * flask webapp using web service
+ * microservice to return color from env var
  * Dockerize nginx webserver + microservice
  * Kubernetes chart for Deployment + Service
  * Load testing container
@@ -15,7 +15,7 @@
 
 # Implementation
 
- ## color microservice
+## flask webapp using web service
  * Using alpine linux for image size & reduced attack surface
  * rip & copy pasta [tutorial](https://www.digitalocean.com/community/tutorials/how-to-build-and-deploy-a-flask-application-using-docker-on-ubuntu-18-04) for starting point
  * Review upstream dockerfiles
@@ -25,3 +25,5 @@
         - nginx logs redirected to stdout & stderr
         - start.sh volume path was incorrect
    - add `touch-reload = /app/uwsgi.ini` feature
+
+## Microservice
