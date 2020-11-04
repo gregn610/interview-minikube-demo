@@ -6,7 +6,7 @@
  - [x] flask webapp using web service (frontend)
  - [x] microservice to return color from env var (backend)
  - [x] Dockerize nginx webserver + microservice ( dockercompose + javascript)
- - [ ] Kubernetes chart for Deployment + Service
+ - [x] Kubernetes chart for Deployment + Service
  - [ ] Load testing container
  - [ ] Logs files monitoring 
  - [ ] istio service mesh
