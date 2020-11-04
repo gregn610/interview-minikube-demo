@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    app: frontend
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: demoapp_frontend
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+          env:
+            - name: DEMO_FOREGROUND_COLOUR
+              value: magenta
+          volumeMounts:
+            - mountPath: /app
+              name: frontend-volume
+      volumes:
+        - name: frontend-volume
+          persistentVolumeClaim:
+            claimName: frontend-volume-claim

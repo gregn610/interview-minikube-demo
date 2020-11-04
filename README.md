@@ -6,7 +6,7 @@
  - [x] flask webapp using web service (frontend)
  - [x] microservice to return color from env var (backend)
  - [x] Dockerize nginx webserver + microservice ( dockercompose + javascript)
- - [ ] Kubernetes chart for Deployment + Service
+ - [x] Kubernetes chart for Deployment + Service
  - [ ] Load testing container
  - [ ] Logs files monitoring 
  - [ ] istio service mesh
@@ -15,7 +15,7 @@
 
 # Implementation Log
 
-## flask webapp using web service
+### flask webapp using web service
  * Using alpine linux for image size & reduced attack surface
  * rip & copy pasta [tutorial](https://www.digitalocean.com/community/tutorials/how-to-build-and-deploy-a-flask-application-using-docker-on-ubuntu-18-04) for starting point
  * Review upstream dockerfiles
@@ -28,7 +28,7 @@
    - test by hand
    - git initial commit
 
-## Microservice
+### Microservice
  * feature branch
  * reorg code for frontend & backend
  * copy/ pasta fronend to backend
@@ -39,7 +39,7 @@
  * test by hand
  * Add usages to README.md
   
-### Usage
+#### Usage
 use provided `./start.sh` or
  
 ```shell script
@@ -52,7 +52,7 @@ docker rm demo.backend
 
 ```
 
-## Dockerize nginx webserver + microservice
+### Dockerize nginx webserver + microservice
  * reorg paths, remove unwanted nesting
  * add docker-compose file
  * write javascript for frontend
@@ -74,3 +74,25 @@ touch frontend/uwsgi.ini
 touch backend/uwsgi.ini
 
 ```
+
+### Kubernetes chart for Deployment + Service
+For docker-windows kubernetes
+```shell script
+export KUBECONFIG=/c/Users/gregn/.kube/config
+kubectl config get-contexts
+
+```
+ * `kompose` to convert docker-compose.yaml to k8s definitions
+ * de-hardcode backend URL in frontend
+ * rewrite `kompose` stuff by hand. Going with `NodePort` services for now
+
+```shell script
+cd kubernetes
+kubectl apply -f .
+kubectl get nodes
+kubectl get svc  # <-------- get localhost ports from here
+
+```
+these'll be busted if the port moves
+[backend URL](http://localhost:30039/)
+[frontend URL](http://localhost:30467/api/v1/colour.json)
