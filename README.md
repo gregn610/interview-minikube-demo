@@ -50,10 +50,17 @@
 ```shell script
 cd demoapp
 docker-compose up
-
 docker-compose down --volumes
 
 ```
+
+```shell script
+curl http://localhost:58080/
+curl http://localhost:58081/api/v1/colour.json
+curl http://localhost:58082/api/v1/colour.json
+
+```
+
 
 Hot restart
 ```shell script
