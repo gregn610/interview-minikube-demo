@@ -7,6 +7,7 @@
  - [x] microservice to return color from env var (backend)
  - [x] Dockerize nginx webserver + microservice ( dockercompose + javascript)
  - [x] Kubernetes chart for Deployment + Service
+ - [ ] Hashicorp Waypoint for Build & Deploy
  - [ ] Load testing container
  - [ ] Logs files monitoring 
  - [ ] istio service mesh
@@ -91,3 +92,21 @@ kubectl get svc  # <-------- get localhost ports from here
 these'll be busted if the port moves
 [backend URL](http://localhost:30039/)
 [frontend URL](http://localhost:30467/api/v1/colour.json)
+
+### Hashicorp Waypoint for Build & Deploy
+ 
+[Hashicorp Waypoint](https://www.waypointproject.io/docs/getting-started)
+
+ ```shell script
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+sudo yum -y install waypoint
+
+```
+
+```shell script
+docker pull hashicorp/waypoint:latest
+waypoint install -platform=docker -accept-tos
+
+```
+

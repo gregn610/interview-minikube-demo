@@ -3,3 +3,5 @@
 *.pyc
 __pycache__/*
 istio-1.7.4/
+
+.waypoint/
