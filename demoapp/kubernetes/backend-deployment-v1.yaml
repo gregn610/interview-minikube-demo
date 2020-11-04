@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment-v1
+  labels:
+    app: backend
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+
+  template:
+    metadata:
+      labels:
+        app: backend
+        version: v1
+    spec:
+      containers:
+        - name: backend
+          image: demoapp_backend
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+          env:
+            - name: DEMO_FOREGROUND_COLOUR
+              value: blue
+          volumeMounts:
+            - mountPath: /app
+              name: backend-volume
+      volumes:
+        - name: backend-volume
+          persistentVolumeClaim:
+            claimName: backend-volume-claim

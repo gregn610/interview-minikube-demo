@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deployment
+  name: backend-deployment-v2
   labels:
     app: backend
 
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: backend
@@ -15,6 +15,7 @@ spec:
     metadata:
       labels:
         app: backend
+        version: v2
     spec:
       containers:
         - name: backend
@@ -24,7 +25,7 @@ spec:
             - containerPort: 80
           env:
             - name: DEMO_FOREGROUND_COLOUR
-              value: magenta
+              value: green
           volumeMounts:
             - mountPath: /app
               name: backend-volume

@@ -2,4 +2,6 @@
 *.pid
 *.pyc
 __pycache__/*
+.waypoint/
+
 istio-1.7.4/
