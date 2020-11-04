@@ -4,6 +4,7 @@ from os import getenv
 from urllib import request
 
 import logging
+logging.getLogger().setLevel(logging.INFO)
 
 @app.route('/')
 def home():
@@ -13,8 +14,11 @@ def home():
         getenv('BACKEND_SERVICE_PORT', '58081'),
         getenv('BACKEND_API_PATH_COLOUR', 'api/v1/colour.json'),
     )
-    logging.warning("API URL: %s", url)
+    logging.info("Frontend using API URL: %s", url)
     # ToDo:
-    data = request.urlopen(url).read().decode('utf-8', 'replace')
+    try:
+        data = request.urlopen(url).read().decode('utf-8', 'replace')
+    except:
+        data = """{}"""
     ctx = {"JSON_DATA": data}
     return render_template('index.html', **ctx)

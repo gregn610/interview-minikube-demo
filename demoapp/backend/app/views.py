@@ -5,7 +5,7 @@ from os import getenv
 
 @app.route('/')
 def home():
-   return "backend!"
+   return "backend!\n"
 
 @app.route('/api/v1/colour.json')
 def template():
