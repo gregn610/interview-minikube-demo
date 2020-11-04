@@ -38,19 +38,7 @@
  * Add env variables (with defaults)
  * test by hand
  * Add usages to README.md
-  
-#### Usage
-use provided `./start.sh` or
- 
-```shell script
-cd src/backend/var/www/TestApp
 
-docker run -d -p 58081:80 --name=demo.backend -v $PWD:/app -e DEMO_FOREGROUND_COLOUR=green demo.backend
-
-docker kill demo.backend
-docker rm demo.backend
-
-```
 
 ### Dockerize nginx webserver + microservice
  * reorg paths, remove unwanted nesting
@@ -60,7 +48,7 @@ docker rm demo.backend
  
 
 ```shell script
-cd src
+cd demoapp
 docker-compose up
 
 docker-compose down --volumes

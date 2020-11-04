@@ -10,6 +10,7 @@ HTTP serves up a bit of JSON, with mimetype set right:
 }
 
 ```
+
 # Usage
 ```shell script
 docker build -t standalone.backend .
