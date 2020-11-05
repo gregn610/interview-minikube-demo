@@ -1,0 +1,39 @@
+---
+# relying on images built by docker-compose earlier
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment-v1
+  labels:
+    app: backend
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: backend
+        version: v1
+    spec:
+      serviceAccountName: backend
+      containers:
+        - name: backend
+          image: demoapp_backend-v1
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+          env:
+            - name: DEMO_FOREGROUND_COLOUR
+              value: coral
+#          volumeMounts:
+#            - mountPath: /app
+#              name: backend-volume
+#      volumes:
+#        - name: backend-volume
+#          persistentVolumeClaim:
+#            claimName: backend-volume-claim
+#

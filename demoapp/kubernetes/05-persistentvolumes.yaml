@@ -1,29 +1,32 @@
-kind: PersistentVolume
-apiVersion: v1
-metadata:
-  name: backend-volume
-  labels:
-    type: local
-spec:
-  storageClassName: manual
-  capacity:
-    storage: 10Gi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/host_mnt/c/Users/gregn/Dev/minikube/demoapp/backend"
----
-kind: PersistentVolume
-apiVersion: v1
-metadata:
-  name: frontend-volume
-  labels:
-    type: local
-spec:
-  storageClassName: manual
-  capacity:
-    storage: 10Gi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/host_mnt/c/Users/gregn/Dev/minikube/demoapp/frontend"
+#---
+## These demo volumes & allow hot reload of the app
+#kind: PersistentVolume
+#apiVersion: v1
+#metadata:
+#  name: backend-volume
+#  labels:
+#    type: local
+#spec:
+#  storageClassName: manual
+#  capacity:
+#    storage: 10Gi
+#  accessModes:
+#    - ReadWriteOnce
+#  hostPath:
+#    path: "/host_mnt/c/Users/gregn/Dev/minikube/demoapp/backend"
+#---
+#kind: PersistentVolume
+#apiVersion: v1
+#metadata:
+#  name: frontend-volume
+#  labels:
+#    type: local
+#spec:
+#  storageClassName: manual
+#  capacity:
+#    storage: 10Gi
+#  accessModes:
+#    - ReadWriteOnce
+#  hostPath:
+#    path: "/host_mnt/c/Users/gregn/Dev/minikube/demoapp/frontend"
+#

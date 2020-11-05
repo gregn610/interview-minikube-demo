@@ -22,13 +22,11 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: 80
-          env:
-            - name: DEMO_FOREGROUND_COLOUR
-              value: magenta
-          volumeMounts:
-            - mountPath: /app
-              name: frontend-volume
-      volumes:
-        - name: frontend-volume
-          persistentVolumeClaim:
-            claimName: frontend-volume-claim
+#          volumeMounts:
+#            - mountPath: /app
+#              name: frontend-volume
+#      volumes:
+#        - name: frontend-volume
+#          persistentVolumeClaim:
+#            claimName: frontend-volume-claim
+#

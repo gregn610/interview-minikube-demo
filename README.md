@@ -31,7 +31,7 @@
 ### Microservice
  * feature branch
  * reorg code for frontend & backend
- * copy/ pasta fronend to backend
+ * copy/pasta frontend to backend
  * change port
  * change template to a versioned API json file
  * change reponse mimetype 
@@ -84,10 +84,76 @@ kubectl config get-contexts
 ```shell script
 cd kubernetes
 kubectl apply -f .
-kubectl get nodes
+kubectl get pods
 kubectl get svc  # <-------- get localhost ports from here
+
+kubectl get pods
+kubectl exec -it backend-deployment-6d87dd5c9b-m95z6 frontend -- bash
+
+kubectl logs -f -l app=frontend -c frontend
 
 ```
 these'll be busted if the port moves
 [backend URL](http://localhost:30039/)
 [frontend URL](http://localhost:30467/api/v1/colour.json)
+
+Verifying load balancing
+```shell script
+kubectl describe svc backend  # check endpoints
+
+#seperate terminals
+kubectl logs -f frontend-deployment-697fd67fc5-4lc78 -c frontend
+kubectl logs -f frontend-deployment-697fd67fc5-894dq -c frontend
+kubectl logs -f frontend-deployment-697fd67fc5-b7fzh -c frontend
+```
+
+Cleanup
+```shell script
+kubectl delete deployment backend-deployment-v1
+kubectl delete deployment backend-deployment-v2
+kubectl delete deployment frontend-deployment
+
+kubectl delete service backend
+kubectl delete service frontend
+
+```
+
+
+### Istio Service Mesh
+
+
+Install Istio somewhere
+```shell script
+curl -L https://istio.io/downloadIstio | sh -
+cd istio-1.7.4
+export PATH=$PWD/bin:$PATH
+
+```
+Istio demo profile
+```shell script
+cd istio-1.7.4
+istioctl install --set profile=demo
+kubectl label namespace default istio-injection=enabled
+```
+
+Ingress Gateway
+```shell script
+kubectl apply -f istio/gateway.yaml
+
+kubectl get svc istio-ingressgateway -n istio-system
+
+```
+
+```shell script
+kubectl apply -f istio/backend-virtualservice.yaml
+kubectl apply -f istio/frontend-virtualservice.yaml
+
+```
+
+Redeploy the workload
+```shell script
+
+```
+
+Manual Test
+ - [http://frontend.localhost/]()
