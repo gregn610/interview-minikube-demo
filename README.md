@@ -97,6 +97,16 @@ these'll be busted if the port moves
 [backend URL](http://localhost:30039/)
 [frontend URL](http://localhost:30467/api/v1/colour.json)
 
+Verifying load balancing
+```shell script
+kubectl describe svc backend  # check endpoints
+
+#seperate terminals
+kubectl logs -f frontend-deployment-697fd67fc5-4lc78 -c frontend
+kubectl logs -f frontend-deployment-697fd67fc5-894dq -c frontend
+kubectl logs -f frontend-deployment-697fd67fc5-b7fzh -c frontend
+```
+
 Cleanup
 ```shell script
 kubectl delete deployment backend-deployment-v1
