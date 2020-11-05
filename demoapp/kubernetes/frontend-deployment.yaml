@@ -22,11 +22,3 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: 80
-#          volumeMounts:
-#            - mountPath: /app
-#              name: frontend-volume
-#      volumes:
-#        - name: frontend-volume
-#          persistentVolumeClaim:
-#            claimName: frontend-volume-claim
-#

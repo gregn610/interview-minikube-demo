@@ -29,11 +29,3 @@ spec:
           env:
             - name: DEMO_FOREGROUND_COLOUR
               value: khaki
-#          volumeMounts:
-#            - mountPath: /app
-#              name: backend-volume
-#      volumes:
-#        - name: backend-volume
-#          persistentVolumeClaim:
-#            claimName: backend-volume-claim
-#
