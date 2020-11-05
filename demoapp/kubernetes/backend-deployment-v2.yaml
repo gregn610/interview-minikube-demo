@@ -26,10 +26,11 @@ spec:
           env:
             - name: DEMO_FOREGROUND_COLOUR
               value: green
-          volumeMounts:
-            - mountPath: /app
-              name: backend-volume
-      volumes:
-        - name: backend-volume
-          persistentVolumeClaim:
-            claimName: backend-volume-claim
+#          volumeMounts:
+#            - mountPath: /app
+#              name: backend-volume
+#      volumes:
+#        - name: backend-volume
+#          persistentVolumeClaim:
+#            claimName: backend-volume-claim
+#
