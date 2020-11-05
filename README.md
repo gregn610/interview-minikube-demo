@@ -13,6 +13,25 @@
  - [ ] isto dashboard demo URLs etc.
  
 
+# Overview
+ * 2 x Backend containers (actually identical):
+    - demoapp_backend:v1
+    - demoapp_backend:v1  
+    
+ * The docker-compose files and the K8s deployments customise the backend colours via env variables
+    
+ * 2 x Frontend containers  (also identical):
+    - demoapp_frontend:v1
+    - demoapp_frontend:v2  
+ 
+ * K8s service account for each of frontend & backend
+ * K8s deployments with labels for all of frontend, backend, v1 & v2
+ * K8s backend service load balances randomly across the 4 backend pods (see colour changes) 
+ * K8s frontend service load balances randomly across the 4 frontend pods. No discernible features yet.
+ 
+ 
+# Architecture 
+
 # Implementation Log
 
 ### flask webapp using web service
