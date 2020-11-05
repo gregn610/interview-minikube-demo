@@ -2,9 +2,9 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
-  name: backend
+  name: frontend
 spec:
-  host: backend
+  host: frontend
   trafficPolicy: # Apply to all ports
     tls:
       mode: ISTIO_MUTUAL
@@ -29,9 +29,20 @@ spec:
     - match:
       - uri:
           prefix: /
+      - port: 80
       route:
         - destination:
             host: frontend
             subset: v1
+            port:
+              number: 58080
+    - match:
+      - uri:
+          prefix: /
+      - port: 8080
+      route:
+        - destination:
+            host: frontend
+            subset: v2
             port:
               number: 58080
