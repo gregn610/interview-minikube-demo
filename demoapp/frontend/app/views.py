@@ -20,5 +20,7 @@ def home():
         data = request.urlopen(url).read().decode('utf-8', 'replace')
     except:
         data = """{}"""
-    ctx = {"JSON_DATA": data}
+    ctx = {"JSON_DATA": data,
+           "DEMO_GREETING": getenv('DEMO_GREETING', 'unset'),
+          }
     return render_template('index.html', **ctx)
