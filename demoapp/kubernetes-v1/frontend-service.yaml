@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -7,8 +8,7 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - protocol: "TCP"
+    - name: "http-80"
       port: 80
-      targetPort: 80
   selector:
     app: frontend

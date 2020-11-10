@@ -1,0 +1,17 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: frontend
+spec:
+  hosts:
+    - "istio-ingress.local"
+    - "frontend.istio-ingress.local"
+  gateways:
+    - demoapp-gateway
+  http:
+    - route:
+        - destination:
+#            FQDN version if namespaced otherwise short name will do
+#            host: frontend.default.svc.cluster.local
+            host: frontend
