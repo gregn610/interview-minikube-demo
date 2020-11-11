@@ -28,5 +28,4 @@ spec:
           env:
             - name: DEMO_GREETING
               value: version 2
-            - name: BACKEND
-              value:
+

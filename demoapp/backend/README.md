@@ -12,6 +12,16 @@ HTTP serves up a bit of JSON, with mimetype set right:
 ```
 
 # Usage
+
+## K8s build
+```powershell
+cd backend
+docker build --no-cache . -t demoapp_backend:v1
+docker build --no-cache . -t demoapp_backend:v2
+
+```
+
+##Standalone build
 ```shell script
 docker build -t standalone.backend .
 docker run -d -p 58081:80 --name=standalone.backend standalone.backend

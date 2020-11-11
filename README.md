@@ -1,6 +1,12 @@
 # Assignment
-`Using tooling of your choice, provide code/documentation for deploying a load-balanced web server into Minikube, including a way to prove the requests are load-balanced.`
+  > Using tooling of your choice, provide code/documentation for deploying a load-balanced web server into Minikube, 
+  > including a way to prove the requests are load-balanced.`
 
+# Demo
+ 1) [Release 1](.\release-01\CHANGELOG.md) - Basic K8s app
+ 2) [Release 2](.\release-02\CHANGELOG.md) - Add Istio Service Mesh
+ 3) [Release 3](.\release-03\CHANGELOG.md) - Dark deploy v2 backend
+ 4) [Release 4](.\release-04\CHANGELOG.md) - Canary Release frontend v2
 
 # Plan
  - [x] flask webapp using web service (frontend)
@@ -9,7 +15,7 @@
  - [x] Kubernetes chart for Deployment + Service
  - [ ] Load testing container
  - [ ] Logs files monitoring 
- - [ ] istio service mesh
+ - [x] istio Service Mesh
  - [ ] isto dashboard demo URLs etc.
  
 
@@ -66,6 +72,9 @@
  * Deal with CORS for API
  
 
+### Add istio Service Mesh
+
+
 ```shell script
 cd demoapp
 docker-compose up
@@ -105,6 +114,8 @@ cd kubernetes
 kubectl apply -f .
 kubectl get pods
 kubectl get svc  # <-------- get localhost ports from here
+# or 
+minikube service frontend  # Opens browser at minikube ip & service port
 
 kubectl get pods
 kubectl exec -it backend-deployment-6d87dd5c9b-m95z6 frontend -- bash

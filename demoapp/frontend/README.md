@@ -6,6 +6,20 @@ Colour info is sourced from a restful API backend and embedded into the javascri
 The website HTML and uWSGI config is passed in on a volume mount of the host filesystem
 ToDo: move uWSGI to a config map 
 
+
+# Build
+## Docker build images
+```powershell
+cd ..\frontend
+docker build --no-cache . -t demoapp_frontend:v1
+docker build --no-cache . -t demoapp_frontend:v2
+
+cd ..
+docker images
+
+```
+
+
 # Usage
 
 Note, standalone won't have a backend API available, so won't be in colour.
@@ -21,7 +35,7 @@ curl http://localhost:58080/
 # Config
 
 ## API Calls
-Uses env vars if present of defaults as below to find the Backend restful API  
+Uses env vars, if present, or defaults as below to find the Backend restful API  
  - BACKEND_API_PROTOCOL        - default=http
  - BACKEND_SERVICE_HOST        - default=localhost
  - BACKEND_SERVICE_PORT        - default=58081
