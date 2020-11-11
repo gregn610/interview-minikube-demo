@@ -9,6 +9,7 @@
 
   <body>
     <h1 id="heading">Colour Demo Page</h1>
+    <h2>Frontend greeting: {{ DEMO_GREETING }}</h2>
     <script>
       function setColoursFromApi() {
         var api_data = {{ JSON_DATA | safe }};

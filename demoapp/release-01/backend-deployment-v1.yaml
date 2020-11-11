@@ -8,7 +8,7 @@ metadata:
     app: backend
     version: v1
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: backend
@@ -22,18 +22,10 @@ spec:
       serviceAccountName: backend
       containers:
         - name: backend
-          image: demoapp_backend-v1
+          image: demoapp_backend:v1
           imagePullPolicy: Never
           ports:
             - containerPort: 80
           env:
             - name: DEMO_FOREGROUND_COLOUR
               value: coral
-#          volumeMounts:
-#            - mountPath: /app
-#              name: backend-volume
-#      volumes:
-#        - name: backend-volume
-#          persistentVolumeClaim:
-#            claimName: backend-volume-claim
-#

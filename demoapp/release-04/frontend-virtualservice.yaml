@@ -2,12 +2,12 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
-  name: backend
+  name: frontend
 spec:
-  host: backend
-  trafficPolicy: # Apply to all ports
-    tls:
-      mode: ISTIO_MUTUAL
+  host: frontend
+#  trafficPolicy: # Apply to all ports
+#    tls:
+#      mode: ISTIO_MUTUAL
   subsets:
     - name: v1
       labels:
@@ -22,16 +22,20 @@ metadata:
   name: frontend
 spec:
   hosts:
-    - "*"
+    - "istio-ingress.local"
+    - "frontend.istio-ingress.local"
   gateways:
     - demoapp-gateway
   http:
     - match:
-      - uri:
-          prefix: /
       route:
+        - destination:
+#            FQDN version if namespaced otherwise short name will do
+#            host: frontend.default.svc.cluster.local
+            host: frontend
+            subset: v2
+          weight: 10
         - destination:
             host: frontend
             subset: v1
-            port:
-              number: 58080
+          weight: 90

@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  frontend-v1:
+    image: demoapp_frontend:v1
+    ports:
+      - "58080:80"
+    environment:
+      BACKEND_SERVICE_HOST: "backend-v1"
+      BACKEND_SERVICE_PORT: "80"
+    depends_on:
+      - backend-v1
+
+
+  backend-v1:
+    image: demoapp_backend:v1
+    ports:
+      - "58081:80"
+    environment:
+      DEMO_FOREGROUND_COLOUR: "blue"

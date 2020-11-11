@@ -1,32 +1,31 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend-deployment
+  name: frontend-deployment-v2
   labels:
     app: frontend
-
+    version: v2
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: frontend
-
+      version: v2
   template:
     metadata:
       labels:
         app: frontend
+        version: v2
     spec:
+      serviceAccountName: frontend
       containers:
         - name: frontend
-          image: demoapp_frontend
+          image: demoapp_frontend:v2
           imagePullPolicy: Never
           ports:
             - containerPort: 80
-#          volumeMounts:
-#            - mountPath: /app
-#              name: frontend-volume
-#      volumes:
-#        - name: frontend-volume
-#          persistentVolumeClaim:
-#            claimName: frontend-volume-claim
-#
+          env:
+            - name: DEMO_GREETING
+              value: version 2
+
